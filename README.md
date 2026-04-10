@@ -40,8 +40,30 @@ This repository contains the assignments and final project completed during my A
     * **Visualization:** Generated Volcano plots (`ggplot2`) and Heatmaps (`pheatmap`) to identify significant gene clusters.
 
 ---
+### My part of the final project: Co-expression & Network Analysis
+**Objective:** Integrate ncRNA and mRNA expression data to identify regulatory hubs and disease-specific gene modules.
 
-##  Tech Stack
-* **Language:** R
-* **Bioinformatics:** Bioconductor (`limma`, `affy`, `arrayQualityMetrics`)
-* **Data Science:** `tidyverse`, `ggplot2`, `pheatmap`
+#### 1. ncRNA-mRNA Co-expression Profiling
+* **Targeted Extraction:** Isolated expression data for 102 high-confidence genes identified from literature (Table S7).
+* **Correlation Pipeline:** * Computed **Spearman correlations** between 706 ncRNAs and the mRNA matrix.
+    * Applied **Benjamini-Hochberg (BH)** FDR correction to control for multiple testing.
+    * **Results:** Identified significant ncRNA-mRNA regulatory pairs ($|r| > 0.5$, $FDR < 0.10$).
+
+#### 2. Network Hub Identification
+* **Hub Genes:** Focused on 20 critical hub genes (e.g., *CD69, CCR7, CXCL10*) from supplementary datasets.
+* **Visualization:** * Generated **igraph** network plots to visualize the connectivity between ncRNAs and immune-related hub genes.
+    * Produced annotated heatmaps distinguishing between Upregulated and Downregulated ncRNA clusters.
+
+#### 3. WGCNA (Weighted Gene Co-expression Network Analysis)
+* **Module Construction:** Performed hierarchical clustering and soft-thresholding (Power = 4) to group genes into functional modules.
+* **Brain Metastasis Specificity:** * Conducted **Wilcoxon Rank Sum tests** on module eigengenes.
+    * Identified modules significantly enriched in **Brain Metastasis (BM)** vs. Primary lung adenocarcinoma ($FDR < 0.05, |logFC| > 0.5$).
+* **Immune Correlation:** Linked genomic modules to immune cell infiltration traits using adaptive correlation thresholds.
+
+#### 4. Key Questions Answered
+* **Hub Discovery:** Identified the top 20 network hubs based on intramodular connectivity ($kWithin$) and Module Membership ($kME > 0.7$).
+* **Network Segregation:** Proved via **Chi-square testing** that Upregulated and Downregulated ncRNAs cluster into distinct functional modules.
+* **Metastatic Drivers:** Isolated specific modules (e.g., MEblue, MEbrown) that act as primary drivers for the transition from primary tumor to brain metastasis.
+
+---
+
