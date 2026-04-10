@@ -1,49 +1,47 @@
 # AI-and-Omics-Research-Internship-2025
-This repository contains the assignments and final project completed during my AI Omics internship.
-Assignment 1 – R Project Setup & Data Cleaning
-Objective
-Set up a structured R project environment and perform basic data cleaning on a patient dataset.
-What Was Done
 
-Created an organized project folder structure (raw_data/, clean_data/, scripts/, results/, plots/)
-Inspected and fixed data types for key variables (age, gender, diagnosis, smoker)
-Created a binary smoking status variable (smoker_binary: 1 = Yes, 0 = No)
-Exported the cleaned dataset as patient_info_clean.csv.
+This repository contains the assignments and final project completed during my AI Omics internship. The projects cover the full pipeline of bioinformatics data analysis, from initial environment setup to differential gene expression (DGE) analysis.
 
-Practice Exercises
-Supplementary exercises covering:
+---
 
-Conditional statements (if, if...else) for checking medical thresholds
-Automating data type conversions using for loops
-Binary encoding of categorical variables (e.g., Yes/No → 1/0)
-Verifying dataset changes before and after transformation
 
-Assignment 2 – Differential Gene Expression (DGE) Classification
-Objective
-Classify genes from DGE analysis results as Upregulated, Downregulated, or Not Significant based on log2FoldChange and adjusted p-value thresholds.
-What Was Done
+##  Assignments Overview
 
-Wrote a classify_gene() function applying standard DGE thresholds (log2FC > 1 or < -1, padj < 0.05)
-Processed two datasets (DEGs_Data_1.csv, DEGs_Data_2.csv) in a for-loop
-Replaced missing padj values with 1 to handle NAs conservatively
-Added a status column to each dataset and saved the results
-Printed summary counts of upregulated, downregulated, and non-significant genes
+###  Assignment 1: R Project Setup & Data Cleaning
+**Objective:** Establish a structured R environment and perform data cleaning on patient metadata.
+* **Key Tasks:**
+    * Fixed data types for variables: `age`, `gender`, `diagnosis`, and `smoker`.
+    * Created a binary variable `smoker_binary` (1 = Yes, 0 = No).
+    * Exported `patient_info_clean.csv` for downstream analysis.
+* **Skills Covered:** Conditional statements for medical thresholds and automating data type conversions with `for` loops.
 
-Assignment 4 – Microarray Data Preprocessing
-Objective
-Full preprocessing workflow on a real microarray dataset from GEO.
-Dataset
-E-GEOD-36980: Post-mortem Alzheimer's disease brain samples (79 total: 47 Control, 32 Alzheimer's)
-What Was Done
+###  Assignment 2: DGE Classification
+**Objective:** Automate the classification of genes based on expression significance.
+* **Key Tasks:**
+    * Developed a `classify_gene()` function using thresholds: $log_2FC > 1$ or $< -1$ and $padj < 0.05$.
+    * Handled missing values by conservatively replacing `NA` $padj$ values with 1.
+    * Processed multiple datasets using iterative loops and generated summary counts.
 
-Quality control before and after normalization
-RMA normalization
-Low-intensity probe filtering
-Group definition (Control vs Alzheimer's Disease)
+###  Assignment 4: Microarray Data Preprocessing
+**Objective:** Preprocess a real-world GEO dataset (`E-GEOD-36980`) involving Alzheimer's Disease brain samples.
+* **Workflow:**
+    * Performed **RMA Normalization** and quality control.
+    * Filtered low-intensity probes to refine the dataset.
+* **Key Results:**
+    * **Probes before filtering:** 32,321
+    * **Transcripts after filtering:** 30,177
+    * **Outlier Reduction:** Successfully reduced outliers from 5 samples to 3 post-normalization.
 
-Key Results
+###  Assignment 5: DGE Analysis (Alzheimer's Disease)
+**Objective:** Detailed differential expression analysis of the `E-GEOD-36980` dataset using Bioconductor.
+* **Analysis Workflow:**
+    * **Quality Control:** Used `arrayQualityMetrics` for assessment.
+    * **Statistical Analysis:** Applied `limma` with empirical Bayes moderation for robust results.
+    * **Visualization:** Generated Volcano plots (`ggplot2`) and Heatmaps (`pheatmap`) to identify significant gene clusters.
 
-Probes before filtering: 32,321
-Transcripts after filtering: 30,177
-Outliers before normalization: 5 samples
-Outliers after normalization: 3 samples (2 by distance, 1 by boxplot)
+---
+
+##  Tech Stack
+* **Language:** R
+* **Bioinformatics:** Bioconductor (`limma`, `affy`, `arrayQualityMetrics`)
+* **Data Science:** `tidyverse`, `ggplot2`, `pheatmap`
