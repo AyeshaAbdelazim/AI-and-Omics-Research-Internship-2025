@@ -1,6 +1,6 @@
 # AI-and-Omics-Research-Internship-2025
 
-This repository contains the assignments and final project completed during my AI Omics internship. The projects cover the full pipeline of bioinformatics data analysis, from initial environment setup to differential gene expression (DGE) analysis.
+This repository contains the assignments and final project completed during my AI Omics internship. 
 
 ---
 
